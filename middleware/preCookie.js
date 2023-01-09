@@ -19,7 +19,9 @@ exports.preCookie = async (req, res, next) => {
         process.env.JWT_SECRET
       );
       console.log("Phone No.", decode);
-      res.send(`TOKEN ALREADY EXISTS ON PHONE NUMBER :- ${decode}`);
+      res.send(
+        `TOKEN ALREADY EXISTS ON PHONE NUMBER :- ${JSON.stringify(decode)}`
+      );
       return;
     } else {
       return next();

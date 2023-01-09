@@ -22,7 +22,7 @@ exports.auth = async (req, res) => {
     };
 
     res.cookie("jwt", token, cookieOptions);
-    res.status(200);
+    return res.status(200).send({ token });
   } catch (error) {
     console.log(error);
   }
