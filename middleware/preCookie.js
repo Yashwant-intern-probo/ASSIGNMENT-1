@@ -6,6 +6,8 @@ const db = require("../connection");
 
 const { promisify } = require("util");
 
+//middleware to check that token exist or not
+//if token exist it will return the token.
 exports.preCookie = async (req, res, next) => {
   const obj = req.cookies;
 
@@ -14,6 +16,7 @@ exports.preCookie = async (req, res, next) => {
   const token = obj[keys[0]];
   try {
     if (req.cookies.jwt) {
+      //to decode token
       const decode = await promisify(jwt.verify)(
         req.cookies.jwt,
         process.env.JWT_SECRET
